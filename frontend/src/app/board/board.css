@@ -1,0 +1,41 @@
+/* 1. Expandimos la zona de aterrizaje para que sea fácil soltar tarjetas en cualquier dirección */
+.drop-zone {
+  min-height: 150px; 
+  flex-grow: 1; 
+}
+
+/* 2. Cambiamos el cursor para indicar que la tarjeta se puede agarrar */
+.task-card {
+  cursor: grab;
+}
+.task-card:active {
+  cursor: grabbing; /* El cursor se "cierra" cuando mantienes el clic */
+}
+
+/* --- CLASES AUTOMÁTICAS DE ANGULAR CDK --- */
+
+/* 3. Estilo de la tarjeta "fantasma" que viaja pegada a tu ratón */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  padding: 0.5rem;
+  font-family: var(--font-main);
+  border: 1px solid #dee2e6;
+}
+
+/* 4. Oculta la tarjeta original en la columna mientras la estás arrastrando */
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+/* 5. Animación fluida para que las tarjetas se aparten suavemente cuando otra llega */
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.drop-zone.cdk-drop-list-receiving .task-card {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

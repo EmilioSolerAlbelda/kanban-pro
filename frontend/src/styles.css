@@ -1,0 +1,31 @@
+/* Importamos la fuente solicitada */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Importamos Bootstrap para usar sus clases utilitarias y sistema de grid */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Definimos nuestras variables globales de color (Paleta oficial) */
+:root {
+  --kp-lime: #bfe32d;
+  --kp-navy: #0a0866;
+  --kp-magenta: #961a79;
+  
+  --font-main: 'Encode Sans Expanded', sans-serif;
+  --bg-board: #f4f5f7; /* Un color gris claro para el fondo del tablero */
+}
+
+/* Configuramos el body (First Mobile) */
+body {
+  font-family: var(--font-main);
+  background-color: var(--kp-navy); /* Usamos el azul marino como fondo principal */
+  color: white; /* Texto en blanco para que contraste con el fondo oscuro */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evitamos scroll horizontal indeseado en móviles */
+}
+
+/* Clases de utilidad personalizadas para nuestros colores */
+.text-lime { color: var(--kp-lime); }
+.text-magenta { color: var(--kp-magenta); }
+.bg-lime { background-color: var(--kp-lime); }
+.bg-magenta { background-color: var(--kp-magenta); }/* You can add global styles to this file, and also import other style files */

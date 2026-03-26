@@ -1,0 +1,30 @@
+<main class="container-fluid pt-4 h-100">
+
+  <header class="mb-4">
+    <h1 class="text-lime fw-bold">Kanban Pro</h1>
+    <p class="text-white">Gestión de flujo de trabajo optimizada.</p>
+  </header>
+
+  <section class="d-flex flex-nowrap overflow-auto pb-3 gap-3" cdkDropListGroup>
+
+    @for(list of lists; track list.id) {
+      <article class="bg-light text-dark rounded-3 p-3 shadow-sm flex-shrink-0 d-flex flex-column h-100"
+        style="width: 300px;">
+
+        <h2 class="h5 fw-bold text-magenta border-bottom pb-2">{{ list.title }}</h2>
+
+        <div class="d-flex flex-column gap-2 mt-3 drop-zone" cdkDropList [cdkDropListData]="list.tasks"
+          (cdkDropListDropped)="drop($event)">
+
+          @for(task of list.tasks; track task) {
+            <div class="bg-white p-2 rounded shadow-sm border task-card" cdkDrag>
+              {{ task }}
+            </div>
+            }
+        </div>
+
+      </article>
+      }
+
+  </section>
+</main>
