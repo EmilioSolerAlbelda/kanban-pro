@@ -1,30 +1,51 @@
 <main class="container-fluid pt-4 h-100">
 
   <header class="mb-4">
-    <h1 class="text-lime fw-bold">Kanban Pro</h1>
-    <p class="text-white">Gestión de flujo de trabajo optimizada.</p>
+    <h1 class="text-lime fw-bold display-5">Kanban Pro</h1>
+    <p class="text-white opacity-75">Gestión de flujo de trabajo optimizada.</p>
   </header>
 
-  <section class="d-flex flex-nowrap overflow-auto pb-3 gap-3" cdkDropListGroup>
+  <section class="d-flex flex-nowrap overflow-auto pb-5 gap-4" cdkDropListGroup>
 
     @for(list of lists; track list.id) {
-      <article class="bg-light text-dark rounded-3 p-3 shadow-sm flex-shrink-0 d-flex flex-column h-100"
-        style="width: 300px;">
+      <article class="bg-white text-dark rounded-3 p-3 shadow-lg flex-shrink-0 d-flex flex-column"
+        style="width: 320px; min-height: 200px; max-height: 80vh;">
 
-        <h2 class="h5 fw-bold text-magenta border-bottom pb-2">{{ list.title }}</h2>
+        <div class="d-flex justify-content-between align-items-center border-bottom border-2 pb-2 mb-3">
+          <h2 class="h5 fw-bold text-magenta m-0">
+            {{ list.title }}
+          </h2>
+          <button class="btn btn-sm text-danger border-0 p-0 px-2 fw-bold" (click)="deleteList(list.id)"
+            title="Eliminar columna">
+            ✕
+          </button>
+        </div>
 
-        <div class="d-flex flex-column gap-2 mt-3 drop-zone" cdkDropList [cdkDropListData]="list.tasks"
+        <div class="d-flex flex-column gap-2 drop-zone h-100" cdkDropList [cdkDropListData]="list.tasks"
           (cdkDropListDropped)="drop($event)">
 
           @for(task of list.tasks; track task) {
-            <div class="bg-white p-2 rounded shadow-sm border task-card" cdkDrag>
-              {{ task }}
+            <div
+              class="bg-light p-3 rounded shadow-sm border task-card d-flex justify-content-between align-items-center"
+              cdkDrag>
+              <span>{{ task.title || task }}</span>
             </div>
             }
+
+            <button class="btn btn-outline-secondary btn-sm mt-2 border-0 text-start" (click)="addTask(list)">
+              + Añadir tarjeta
+            </button>
         </div>
 
       </article>
       }
+
+      <div class="flex-shrink-0" style="width: 300px;">
+        <button class="btn btn-lime w-100 fw-bold shadow-sm p-3 d-flex align-items-center justify-content-center gap-2"
+          (click)="addList()">
+          <span style="font-size: 1.5rem;">+</span> Añadir otra lista
+        </button>
+      </div>
 
   </section>
 </main>

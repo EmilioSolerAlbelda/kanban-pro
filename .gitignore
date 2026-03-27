@@ -1,3 +1,15 @@
-backend/node_modules/
+# Dependencias de Node (Ambas carpetas)
+node_modules/
+**/node_modules/
+
+# Variables de entorno (Secretos)
+.env
 backend/.env
+
+# Archivos de compilación de Angular
+dist/
+.angular/
+
+# Archivos temporales de Mac y editores
 .DS_Store
+.vscode/
